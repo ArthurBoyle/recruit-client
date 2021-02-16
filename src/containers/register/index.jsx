@@ -38,9 +38,9 @@ class Register extends Component {
                         <ListItem>
                             用户类型：
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <Radio onChange={this.handleChange("type", "expert")} checked={type === "expert"}>大神</Radio>
+                            <Radio onChange={() => this.handleChange("type", "expert")} checked={type === "expert"}>大神</Radio>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <Radio onChange={this.handleChange("type", "boss")} checked={type === "boss"}>老板</Radio>
+                            <Radio onChange={() => this.handleChange("type", "boss")} checked={type === "boss"}>老板</Radio>
                         </ListItem>
                     </List>
                     <WhiteSpace/>
