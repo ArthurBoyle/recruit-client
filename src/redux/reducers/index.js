@@ -1,9 +1,4 @@
 import {combineReducers} from "redux";
+import {user} from "./user";
 
-function xxx(state=0, action) {
-    return state + 1
-}
-function yyy(state=0, action) {
-    return state
-}
-export default combineReducers({xxx, yyy})
+export default combineReducers({user})

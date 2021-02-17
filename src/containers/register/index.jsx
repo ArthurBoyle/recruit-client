@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 import {NavBar, WingBlank, List, InputItem, Radio, Button, WhiteSpace} from "antd-mobile";
 import Logo from "../../components/logo";
+import {register} from "../../redux/actions/sign";
 
 const ListItem = List.Item;
 
@@ -19,13 +21,23 @@ class Register extends Component {
         })
     }
     register = () => {
-        console.log(this.state);
+        // console.log(this.state);
+        this.props.register(this.state);
+    }
+
+    resetMsg = () => {
+        this.setState({error: ""})
     }
     toLogin = () => {
         this.props.history.replace("/login");
     }
+
     render() {
         const {type} = this.state;
+        const {redirectTo} = this.props.user;
+        if(redirectTo) {
+            return <Redirect to={redirectTo}/>
+        }
         return (
             <Fragment>
                 <NavBar>BOSS直聘</NavBar>
@@ -38,9 +50,9 @@ class Register extends Component {
                         <ListItem>
                             用户类型：
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <Radio onChange={this.handleChange("type", "expert")} checked={type === "expert"}>大神</Radio>
+                            <Radio onChange={() => this.handleChange("type", "expert")} checked={type === "expert"}>大神</Radio>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <Radio onChange={this.handleChange("type", "boss")} checked={type === "boss"}>老板</Radio>
+                            <Radio onChange={() => this.handleChange("type", "boss")} checked={type === "boss"}>老板</Radio>
                         </ListItem>
                     </List>
                     <WhiteSpace/>
@@ -54,6 +66,6 @@ class Register extends Component {
 }
 
 export default connect(
-    state => ({}),
-    {}
+    state => ({user: state.user}),
+    {register}
 )(Register);

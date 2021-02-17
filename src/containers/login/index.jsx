@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 import {NavBar, WingBlank, List, InputItem, Button, WhiteSpace} from "antd-mobile";
 import Logo from "../../components/logo";
+import {login} from "../../redux/actions/sign";
 
 class Login extends Component {
     state = {
@@ -14,12 +16,17 @@ class Login extends Component {
         })
     }
     login = () => {
-        console.log(this.state)
+        // console.log(this.state);
+        this.props.login(this.state);
     }
     toRegister = () => {
         this.props.history.replace("/register");
     }
     render() {
+        const {redirectTo} = this.props.user;
+        if(redirectTo) {
+            return <Redirect to={redirectTo}/>
+        }
         return (
             <Fragment>
                 <NavBar>BOSS直聘</NavBar>
@@ -40,6 +47,6 @@ class Login extends Component {
 }
 
 export default connect(
-    state => ({}),
-    {}
+    state => ({user: state.user}),
+    {login}
 )(Login);
