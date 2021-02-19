@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function ajax(url, type, data) {
+export default function ajax(url, type, data={}) {
     if(type === "GET") {
         let paramStr = "";
         Object.keys(data).forEach(key => {
@@ -9,7 +9,7 @@ export default function ajax(url, type, data) {
         if(paramStr) {
             paramStr = paramStr.substring(0, paramStr.length - 1);
         }
-        return axios.get(url + "?" + paramStr)
+        return axios.get(url + "?" + paramStr);
     } else {
         return axios.post(url, data);
     }

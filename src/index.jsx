@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 
 import Main from "./containers/main";
@@ -12,10 +12,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route path="/main" component={Main}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/login" component={Login}/>
-                <Redirect to="/main"/>
+                <Route component={Main}/>
             </Switch>
         </BrowserRouter>
     </Provider>,
