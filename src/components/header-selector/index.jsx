@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const data = Array.from(new Array(20)).map((_val, i) => ({
     text: `头像${i + 1}`,
-    icon: require(`./headers/头像${i + 1}.png`).default
+    icon: require(`../../assets/headers/头像${i + 1}.png`).default
 }));
 
 export default class HeaderSelector extends Component {

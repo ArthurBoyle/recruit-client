@@ -31,7 +31,7 @@ class ExpertInfo extends Component {
         }
         return (
             <Fragment>
-                <NavBar>老板信息完善</NavBar>
+                <NavBar>大神信息完善</NavBar>
                 <HeaderSelector setHeader={this.setHeader}/>
                 <InputItem placeholder="请输入求职岗位" onChange={value => this.handleChange("post", value)}>求职岗位：</InputItem>
                 <TextareaItem title="个人介绍：" rows={5} onChange={value => this.handleChange("info", value)}/>

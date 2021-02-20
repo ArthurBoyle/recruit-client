@@ -2,7 +2,7 @@ import {reqUpdate} from "../../api";
 import {ERROR_MSG, RESET_USER, UPDATE_INFO} from "../constant";
 
 const updateUser = (user) => ({type: UPDATE_INFO, data: user});
-const resetUser = (msg) => ({type: RESET_USER, data: msg});
+export const resetUser = (msg) => ({type: RESET_USER, data: msg});
 const errorMsg = (msg) => ({type: ERROR_MSG, data: msg});
 
 export const updateBoss = (user) => {

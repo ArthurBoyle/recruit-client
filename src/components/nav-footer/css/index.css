@@ -1,0 +1,7 @@
+/*使导航始终在底部*/
+.am-tab-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: inherit;
+}

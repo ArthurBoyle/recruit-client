@@ -4,7 +4,7 @@ import {AUTH_SUCCESS, ERROR_MSG} from "../constant";
 // 注册/登录成功的同步action
 const authSuccess = (user) => ({type: AUTH_SUCCESS, data: user});
 // 错误提示信息的同步action
-const errorMsg = (msg) => ({type: ERROR_MSG, data: msg});
+export const errorMsg = (msg) => ({type: ERROR_MSG, data: msg});
 
 //注册的异步action
 export const register = (user) => {

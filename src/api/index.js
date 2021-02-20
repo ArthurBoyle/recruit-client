@@ -8,3 +8,5 @@ export const reqLogin = (user) => ajax("/login", "POST", user);
 export const reqUpdate = (user) => ajax("/update", "POST", user);
 //获取用户信息
 export const reqUser = () => ajax("/user", "GET");
+//获取用户列表
+export const reqUserList = (type) => ajax("/userlist", "GET", {type})
