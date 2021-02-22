@@ -14,6 +14,7 @@ import NotFound from "../../components/not-found";
 import {getRedirectTo} from "../../utils";
 import {getUser} from "../../redux/actions/getUser";
 import NavFooter from "../../components/nav-footer";
+import Chat from "./chat";
 import "./index.css";
 
 class Main extends Component {
@@ -63,6 +64,7 @@ class Main extends Component {
             return <Redirect to="/login"/>
         }
         const {_id, type, header} = this.props.user;
+        const {unReadCount} = this.props;
         if (!_id) {
             return null;
         } else {
@@ -93,15 +95,16 @@ class Main extends Component {
                     }
                     <Route path="/bossinfo" component={BossInfo}/>
                     <Route path="/expertinfo" component={ExpertInfo}/>
+                    <Route path="/chat/:userid" component={Chat}/>
                     <Route component={NotFound}/>
                 </Switch>
-                {currentNav ? <NavFooter navList={navList}/> : null}
+                {currentNav ? <NavFooter navList={navList} unReadCount={unReadCount}/> : null}
             </Fragment>
         );
     }
 }
 
 export default connect(
-    state => ({user: state.user}),
+    state => ({user: state.user, unReadCount: state.chat.unReadCount}),
     {getUser}
 )(Main);

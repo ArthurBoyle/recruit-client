@@ -1,5 +1,6 @@
 import {reqRegister, reqLogin} from "../../api";
 import {AUTH_SUCCESS, ERROR_MSG} from "../constant";
+import {getMsgList} from "./sendMsg";
 
 // 注册/登录成功的同步action
 const authSuccess = (user) => ({type: AUTH_SUCCESS, data: user});
@@ -22,6 +23,7 @@ export const register = (user) => {
         const response = await reqRegister({username, password, type});   //username, password, type
         const result = response.data;   //{code: 0/1, data: user, msg: ""}
         if(result.code === 0) {
+            getMsgList(dispatch, result.data._id);
             dispatch(authSuccess(result.data));
         } else {
             dispatch(errorMsg(result.msg));
@@ -40,6 +42,7 @@ export const login = (user) => {
         const response = await reqLogin(user);   //username, password
         const result = response.data;   //{code: 0/1, data: user, msg: ""}
         if(result.code === 0) {
+            getMsgList(dispatch, result.data._id);
             dispatch(authSuccess(result.data));
         } else {
             dispatch(errorMsg(result.msg));
